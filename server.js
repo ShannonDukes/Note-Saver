@@ -6,12 +6,12 @@ let PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use("/public", express.static(path.join(__dirname, "public"));
+app.use("/public", express.static(path.join(__dirname, "public")));
 
 require("./routes/apiroutes")(app);
 require("./routes/htmlroutes")(app);
 
-app.listen(PORT, function(){
-    console.log("App listening on PORT" + PORT);
-    console.log("http://localhost:" + PORT);
+app.listen(PORT, function () {
+  console.log("App listening on PORT " + PORT);
+  console.log("http://localhost:" + PORT);
 });
