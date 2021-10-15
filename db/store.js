@@ -61,15 +61,15 @@ class Store {
                     }
                 }
                 this.write(notes);
-                //     fs.writeFileSync(jsonFilePath, JSON.stringify(database), function (err) {
-                //         if (err) {
-                //             console.log("There is an error in the writeFile if/else statement.")
-                //             return console.log(err);
-                //         } else {
-                //             console.log("Your note was deleted!");
-                //         }
-                //     });
-                //     res.json(database);
+                    // fs.writeFileSync(jsonFilePath, JSON.stringify(database), function (err) {
+                    //     if (err) {
+                    //         console.log("There is an error in the writeFile if/else statement.")
+                    //         return console.log(err);
+                    //     } else {
+                    //         console.log("Your note was deleted!");
+                    //     }
+                    // });
+                    // res.json(database);
             })
     }
 };
