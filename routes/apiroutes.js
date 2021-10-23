@@ -22,13 +22,16 @@ router.get("/notes", function (req, res) {
 router.post("/notes", function (req, res) {
     store
         .addNote(req.body)
-        .then((notes) => res.json(notes))
+        .then((notes) => {
+            console.log(notes)
+            res.json(notes)
+        })
         .catch(err => res.status(500).json(err))
 });
 
-router.delete("/notes/:title", function (req, res) {
+router.delete("/notes/:id", function (req, res) {
     store
-        .deleteNotes(req.params.title)
+        .deleteNotes(req.params.id)
         .then(() => res.json({ ok: true }))
         .catch(err => res.status(500).json(err))
 });

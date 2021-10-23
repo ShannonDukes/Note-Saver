@@ -6,6 +6,7 @@ const fs = require("fs");
 const path = require("path");
 const util = require("util");
 const express = require("express");
+const { v4: uuidv4 } = require("uuid");
 const app = express();
 
 // Creates a promise, which the program will complete before moving on. 
@@ -36,24 +37,35 @@ class Store {
     };
     addNote(newNote) {
         //create new obj with notes param using notes.title and notes.text
-        console.log(newNote);
-        return this.getNotes().then(notes => {
+        // console.log(newNote);
+        const myNewObject = { 
+            title: newNote.title,
+            text: newNote.text,
+            id: uuidv4()
+        }
+        console.log(myNewObject);
+        return this.getNotes()
+        .then(notes => [...notes, myNewObject])
+        .then(updatedNotes => this.write(updatedNotes))
+        .then(() => myNewObject)
             // console.log(newNote, notes);
-            const newNoteList = [...notes, newNote]; // Creates a new array with the memebers of the array notes and adds newNote to the end
-            console.log(newNoteList);
+             // Creates a new array with the memebers of the array notes and adds newNote to the end
+            // console.log(newNoteList);
             // Step 1: convert to a string
-            return this.write(newNoteList);
-        })
+            // return this.write(newNoteList).then(notes => {
+            //     return notes;
+            // });
+        
         //this.read().then(youll get info back)
         //this.write with old json info and new obj from frontend
     };
-    deleteNotes(title) {
+    deleteNotes(id) {
         // use the filter function
         return this.getNotes()
             .then(notes => {
-                console.log("This note says " + title);
+                console.log("This note says " + id);
                 for (var i = 0; i < notes.length; i++) {
-                    if (notes[i].title === title) {
+                    if (notes[i].id === id) {
                         // Splice takes i position, and then deletes the 1 note.
                         notes.splice(i, 1);
                         console.log(notes);
