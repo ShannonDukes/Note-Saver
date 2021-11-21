@@ -10,8 +10,9 @@
 
 ## Description
 An application that can be used to write, save and delete notes. The application uses an express backend and filesystem to save and retrieve noted from a JSON file. The notes are routed from the backend and rendered to an HTML page on the frontend for the client. 
-![Here is a screenshot of the application's start screen.](notesaver1.jpg)
-![Here is a screenshot of the application running.](notesaver2.jpg)
+
+![Here is a screenshot of the application's start screen.](./public/assets/images/notesaver1.jpg)
+![Here is a screenshot of the application running.](./public/assets/images/notesaver2.jpg)
 
 ## Usage
 (1) Enter a title and a note into the note taker. 
